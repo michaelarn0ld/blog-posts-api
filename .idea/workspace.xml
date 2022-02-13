@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1327a104-7b61-4ba0-9cd4-7ff314088c9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/http/requests.http" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/exceptions/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/controllers/PingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/michaelarn0ld/blogposts/api/controllers/PostControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/michaelarn0ld/blogposts/api/services/PostClientTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/controllers/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/models/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/models/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +46,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -56,6 +59,8 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="michaelarn0ld.blogposts.api.controllers" />
+      <recent name="michaelarn0ld.blogposts.api.services" />
       <recent name="michaelarn0ld.blogposts.api.models" />
     </key>
   </component>
@@ -64,7 +69,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="michaelarn0ld.blogposts.api.App" />
       <module name="blog-posts-api" />
@@ -78,9 +83,77 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PostControllerTest.shouldBe400IfBadDirection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog-posts-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="michaelarn0ld.blogposts.api.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="michaelarn0ld.blogposts.api.controllers" />
+      <option name="MAIN_CLASS_NAME" value="michaelarn0ld.blogposts.api.controllers.PostControllerTest" />
+      <option name="METHOD_NAME" value="shouldBe400IfBadDirection" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostControllerTest.shouldBe400IfBadSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog-posts-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="michaelarn0ld.blogposts.api.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="michaelarn0ld.blogposts.api.controllers" />
+      <option name="MAIN_CLASS_NAME" value="michaelarn0ld.blogposts.api.controllers.PostControllerTest" />
+      <option name="METHOD_NAME" value="shouldBe400IfBadSort" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostControllerTest.shouldBe400IfNoTag" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog-posts-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="michaelarn0ld.blogposts.api.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="michaelarn0ld.blogposts.api.controllers" />
+      <option name="MAIN_CLASS_NAME" value="michaelarn0ld.blogposts.api.controllers.PostControllerTest" />
+      <option name="METHOD_NAME" value="shouldBe400IfNoTag" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostControllerTest.shouldBeEmptyJSONIfInvalidTag" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog-posts-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="michaelarn0ld.blogposts.api.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="michaelarn0ld.blogposts.api.controllers" />
+      <option name="MAIN_CLASS_NAME" value="michaelarn0ld.blogposts.api.controllers.PostControllerTest" />
+      <option name="METHOD_NAME" value="shouldBeEmptyJSONIfInvalidTag" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.PostControllerTest.shouldBeEmptyJSONIfInvalidTag" />
+        <item itemvalue="JUnit.PostControllerTest.shouldBe400IfBadDirection" />
+        <item itemvalue="JUnit.PostControllerTest.shouldBe400IfBadSort" />
+        <item itemvalue="JUnit.PostControllerTest.shouldBe400IfNoTag" />
       </list>
     </recent_temporary>
   </component>

@@ -1,24 +1,18 @@
 package michaelarn0ld.blogposts.api.services;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import michaelarn0ld.blogposts.api.models.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 import java.util.stream.Stream;
 
 @Service
-public class PostConsumerService {
+public class PostService {
 
-    private final RestTemplate restTemplate;
-
-    public PostConsumerService() {
-        this.restTemplate = new RestTemplate();
-    }
+    @Autowired
+    private PostClient postClient;
 
     public Result<List<Post>> getPosts(List<String> tags, String sortBy, String direction) {
         Result<List<Post>> result = validate(tags, sortBy, direction);
@@ -44,7 +38,7 @@ public class PostConsumerService {
                 case "id":
                     return accumulatePosts(tags).sorted(Comparator.comparingInt(Post::getId));
                 case "reads":
-                    return accumulatePosts(tags).sorted(Comparator.comparing(Post::getAuthor));
+                    return accumulatePosts(tags).sorted(Comparator.comparingInt(Post::getReads));
                 case "likes":
                     return accumulatePosts(tags).sorted(Comparator.comparingInt(Post::getLikes));
                 case "popularity":
@@ -57,7 +51,7 @@ public class PostConsumerService {
                 case "id":
                     return accumulatePosts(tags).sorted(Comparator.comparingInt(Post::getId).reversed());
                 case "reads":
-                    return accumulatePosts(tags).sorted(Comparator.comparing(Post::getAuthor).reversed());
+                    return accumulatePosts(tags).sorted(Comparator.comparingInt(Post::getReads).reversed());
                 case "likes":
                     return accumulatePosts(tags).sorted(Comparator.comparingInt(Post::getLikes).reversed());
                 case "popularity":
@@ -72,20 +66,13 @@ public class PostConsumerService {
         return tags.parallelStream()
                 .map(tag -> {
                     try {
-                        return consumePostService(tag);
+                        return postClient.consumePostService(tag);
                     } catch (Exception ignored) {
                         return null;
                     }
                 })
                 .flatMap(Collection::stream)
                 .distinct();
-    }
-
-    private List<Post> consumePostService(String tag) throws Exception {
-        String json = restTemplate.getForObject("https://api.hatchways.io/assessment/blog/posts?tag=" + tag, String.class);
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode node = mapper.readTree(json).get("posts");
-        return mapper.readValue(node.traverse(), new TypeReference<List<Post>>(){});
     }
 
     private Result<List<Post>> validate(List<String> tags, String sortBy, String direction) {
