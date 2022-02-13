@@ -1,10 +1,12 @@
 package michaelarn0ld.blogposts.api.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 @Data
+@EqualsAndHashCode
 public class Post {
 
     private int id;
