@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/post")
@@ -28,7 +30,9 @@ public class PostController {
 
         Result<List<Post>> result = client.getPosts(tags, sortBy, direction);
         if (result.isSuccess()) {
-            return new ResponseEntity<>(result.getPayload(), result.getType());
+            Map<String, List<Post>> success = new HashMap<>();
+            success.put("posts", result.getPayload());
+            return new ResponseEntity<>(success, result.getType());
         }
         ErrorResponse errorResponse = new ErrorResponse(result.getMessages());
         return new ResponseEntity<>(errorResponse, result.getType());

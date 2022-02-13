@@ -15,7 +15,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.mockito.Mockito.when;
 
@@ -53,7 +55,9 @@ class PostControllerTest {
 
     @Test
     void shouldGetByTag() throws Exception {
-        String expectedJson = jsonMapper.writeValueAsString(techPosts);
+        Map<String, List<Post>> m = new HashMap<>();
+        m.put("posts", techPosts);
+        String expectedJson = jsonMapper.writeValueAsString(m);
         mvc.perform(get("/api/post?tag=tech"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -69,7 +73,9 @@ class PostControllerTest {
             new Post(4, "fourAuth", 4, 800, 0.45, 5000, null),
             new Post(5, "fiveAuth", 5, 300, 0.56, 1000, null)
         );
-        String expectedJson = jsonMapper.writeValueAsString(expected);
+        Map<String, List<Post>> m = new HashMap<>();
+        m.put("posts", expected);
+        String expectedJson = jsonMapper.writeValueAsString(m);
         mvc.perform(get("/api/post?tag=tech,health"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -79,7 +85,9 @@ class PostControllerTest {
     @Test
     void shouldBeEmptyJSONIfInvalidTag() throws Exception {
         List<Post> expected = List.of();
-        String expectedJson = jsonMapper.writeValueAsString(expected);
+        Map<String, List<Post>> m = new HashMap<>();
+        m.put("posts", expected);
+        String expectedJson = jsonMapper.writeValueAsString(m);
         mvc.perform(get("/api/post?tag=invalid"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
