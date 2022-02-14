@@ -1,19 +1,32 @@
 # Blog Posts API
 
+## Build from source
+Execute the following from the root of the project.
+```
+mvn clean install
+```
+```
+cd target
+```
+```
+java -jar main.jar
+```
+The app will be available at `localhost:8080`
+
 ## Starting with the JAR
-The simplest way to start this application is use the included `app.jar` file.
+The simplest way to start this application is use the included `main.jar` file.
 To do this, make sure you are in the root directory of the project and that the
-`app.jar` file is visible. Verify you can see the app.jar by running the command:
+`main.jar` file is visible. Verify you can see the app.jar by running the command:
 
 ```
-ls | grep app.jar
+ls | grep main.jar
 ```
 
 If you see the `app.jar` in the output, then you are in the right spot. After this,
 you must start the application by:
 
 ```
-java -jar app.jar
+java -jar main.jar
 ```
 
 Give it a moment; once it fully starts, it will be available at `localhost:8080`
