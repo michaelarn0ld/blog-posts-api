@@ -42,7 +42,7 @@ public class PostService {
                 case "likes":
                     return accumulatePosts(tags).sorted(Comparator.comparingInt(Post::getLikes));
                 case "popularity":
-                    return accumulatePosts(tags).sorted(Comparator.comparingDouble(Post::getId));
+                    return accumulatePosts(tags).sorted(Comparator.comparingDouble(Post::getPopularity));
                 default:
                     return null;
             }
@@ -55,7 +55,7 @@ public class PostService {
                 case "likes":
                     return accumulatePosts(tags).sorted(Comparator.comparingInt(Post::getLikes).reversed());
                 case "popularity":
-                    return accumulatePosts(tags).sorted(Comparator.comparingDouble(Post::getId).reversed());
+                    return accumulatePosts(tags).sorted(Comparator.comparingDouble(Post::getPopularity).reversed());
                 default:
                     return null;
             }
