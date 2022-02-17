@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1327a104-7b61-4ba0-9cd4-7ff314088c9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http/requests.http" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/michaelarn0ld/blogposts/api/services/PostService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
