@@ -1,16 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./Search.scss";
+import { gsap } from "gsap";
+import { useNavigate } from "react-router-dom";
+import PostsContext from "./PostsContext";
 
 export default function Search() {
   const [fields, setFields] = useState([]);
   const [tagName, setTagName] = useState("");
   const [ascending, setAscending] = useState(false);
   const [orderBy, setOrderBy] = useState("");
-  const [posts, setPosts] = useState([]);
+  const divRef = useRef();
+  const navigate = useNavigate();
+  const [_, setPosts] = useContext(PostsContext)
 
   const getPosts = async (query) => {
     try {
@@ -37,12 +42,16 @@ export default function Search() {
     const tags = fields.toString().replace(/ /g, "%20");
     const direction = ascending ? "asc" : "desc";
     const query = `tag=${tags}&direction=${direction}&sortBy=${orderBy}`;
-    getPosts(query).then((res) => renderPosts(res));
+    getPosts(query).then((res) => {
+      setPosts(res)
+      navigate("/posts");
+    });
   };
 
-  const renderPosts = (posts) => {
-    console.log(posts)
-  };
+  useEffect(() => {
+    gsap.to(divRef.current, { opacity: 1, y: 0, duration: 0.5 }).delay(0.5);
+  });
+
   return (
     <div
       style={{
@@ -50,7 +59,11 @@ export default function Search() {
         "background-image": "linear-gradient(315deg, #485461 0%, #28313b 74%)",
       }}
     >
-      <section class="vh-100" style={{}}>
+      <section
+        ref={divRef}
+        class="vh-100"
+        style={{ opacity: "0", transform: "translateY(-100px)" }}
+      >
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
